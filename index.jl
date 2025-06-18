@@ -2,7 +2,7 @@ function run_simulation()
     println("Insira a quantidade de Estados que sua matriz vai conter")
     num_states = parse(Int, readline())
 
-    # Read transition matrix
+    # Matriz de Transição
     transition_matrix = zeros(Float64, num_states, num_states)
     for row in 1:num_states
         while true
@@ -22,7 +22,7 @@ function run_simulation()
         end
     end
 
-    # Read initial distribution
+    # Distribuição Inicial
     println("\nInsira as probabilidades inicias para cada $num_states estados, separados por espaço")
     initial_distribution = zeros(Float64, num_states)
     while true
@@ -39,12 +39,12 @@ function run_simulation()
         break
     end
 
-    # Number of iterations
+    # Número de Interações
     println("\nQuantas interações você deseja simular?")
     input_iterations = readline()
     iterations = isempty(input_iterations) ? 100 : parse(Int, input_iterations)
 
-    # Run simulation
+    # Iniciar Simulação
     for _ in 1:iterations
         initial_distribution = initial_distribution * transition_matrix
     end
